@@ -1,0 +1,45 @@
+# Supabase local development configuration.
+# Docs: https://supabase.com/docs/guides/cli/config
+
+project_id = "fitness-nutrition-tracker"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+shadow_port = 54320
+major_version = 15
+
+[studio]
+enabled = true
+port = 54323
+
+[auth]
+enabled = true
+site_url = "http://localhost:3000"
+additional_redirect_urls = ["fitnutri://auth-callback"]
+jwt_expiry = 3600
+enable_signup = true
+
+[auth.email]
+enable_signup = true
+enable_confirmations = false   # local dev only; require confirmation in prod
+
+[realtime]
+enabled = true
+
+# Edge Functions. verify_jwt defaults to true; the Strava webhook must accept
+# unauthenticated calls from Strava, so it opts out and verifies its own token.
+[functions.ai-food-log]
+verify_jwt = true
+
+[functions.food-lookup]
+verify_jwt = true
+
+[functions.strava-webhook]
+verify_jwt = false

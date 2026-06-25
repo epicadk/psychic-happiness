@@ -1,0 +1,29 @@
+# Gradle / Kotlin
+.gradle/
+build/
+**/build/
+!gradle/wrapper/gradle-wrapper.jar
+local.properties
+.kotlin/
+
+# IDE
+.idea/
+*.iml
+.fleet/
+.vscode/
+
+# Xcode / iOS
+xcuserdata/
+*.xcworkspace/xcuserdata/
+Pods/
+DerivedData/
+
+# Supabase CLI
+supabase/.branches/
+supabase/.temp/
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
