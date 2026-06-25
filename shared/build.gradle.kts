@@ -4,7 +4,15 @@ plugins {
 }
 
 kotlin {
-    jvmToolchain(17)
+    // JDK 21 toolchain. Revisit when :androidApp lands — AGP supports 17–21; the
+    // shared module's jvm() target only needs a modern LTS for host-side tests.
+    jvmToolchain(21)
+
+    // The HealthBridge sync boundary uses an expect/actual class (Beta in K2);
+    // this opts in so it doesn't warn on every build.
+    compilerOptions {
+        freeCompilerArgs.add("-Xexpect-actual-classes")
+    }
 
     // Android target is added alongside :androidApp in Phase 1. iOS targets are
     // declared here so the native health bridge (expect/actual) has a home.
